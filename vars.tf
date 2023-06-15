@@ -1,6 +1,6 @@
 variable "cidr_prefix" {
   type = string
-  default = "10.104"
+  default = "10.105"
 }
 
 variable "prefix" {
