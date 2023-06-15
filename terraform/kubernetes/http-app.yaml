@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: http-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: http-app
+  name: http-app-deployment
+  labels:
+    app: http-app
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: http-app
+  template:
+    metadata:
+      labels:
+        app: http-app
+    spec:
+      containers:
+      - name: http-app
+        image: 482235079173.dkr.ecr.us-east-1.amazonaws.com/http-image:latest
+        ports:
+        - name: http
+          containerPort: 80
+        imagePullPolicy: IfNotPresent
